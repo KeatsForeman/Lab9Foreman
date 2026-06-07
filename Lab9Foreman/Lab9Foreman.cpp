@@ -141,7 +141,7 @@ int main(void)
 		{
 			redraw = false;
 
-			myPlayer.DrawPlayer();
+			myPlayer.DrawPlayer(myPlayer.getLives());
 			for (int i = 0;i < NUM_ArrowS;i++)
 				Arrows[i].DrawArrow();
 			for (int i = 0;i < NUM_ghostS;i++)

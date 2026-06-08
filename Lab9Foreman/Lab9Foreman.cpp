@@ -149,6 +149,7 @@ int main(void)
 		if (redraw && al_is_event_queue_empty(event_queue))
 		{
 			redraw = false;
+			//draws kirby lives
 			if (myPlayer.getLives() > 0) {
 				myPlayer.DrawPlayer(myPlayer.getLives());
 			}

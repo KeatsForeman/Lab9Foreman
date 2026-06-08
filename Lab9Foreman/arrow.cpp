@@ -38,6 +38,7 @@ void Arrow::UpdateArrow(int WIDTH)
 			live = false;
 	}
 }
+//added player parameter to gain access to score
 void Arrow::CollideArrow(ghost ghosts[], int cSize, player &Player)
 {
 	if (live)

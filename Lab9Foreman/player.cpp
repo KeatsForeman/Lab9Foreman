@@ -48,6 +48,7 @@ void player::MoveUp()
 	if (y < 0)
 		y = 0;
 }
+//fixed collision
 void player::MoveDown(int HEIGHT)
 {
 	y += speed;

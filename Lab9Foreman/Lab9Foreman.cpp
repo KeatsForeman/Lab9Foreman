@@ -17,6 +17,7 @@ int main(void)
 	const int NUM_ghostS = 10;
 	enum KEYS { UP, DOWN, LEFT, RIGHT, SPACE };
 	bool keys[5] = { false, false, false, false, false };
+	std::string scoreBoard;
 
 
 	//primitive variable
@@ -45,6 +46,7 @@ int main(void)
 	al_init_font_addon();
 
 	ALLEGRO_FONT* font = al_load_font("cat.ttf", 20, 0);
+	ALLEGRO_FONT* font1 = al_load_font("cat.ttf", 50, 0);
 
 	//object variables
 	player myPlayer(HEIGHT);
@@ -160,15 +162,18 @@ int main(void)
 
 			myPlayer.DrawLives(myPlayer.getLives());
 
-			std::string scoreBoard = "Score: " + (std::to_string(myPlayer.getScore()));
+			scoreBoard = "Score: " + (std::to_string(myPlayer.getScore()));
 
 			al_draw_text(font, al_map_rgb(255, 255, 255), 150, 20, 0, scoreBoard.c_str());
 			al_flip_display();
 			al_clear_to_color(al_map_rgb(0, 0, 0));
 		}
 	}
-
-
+	al_clear_to_color(al_map_rgb(0, 0, 0));
+	al_draw_text(font1, al_map_rgb(255, 255, 255), 100, 100, 0, "Game Over");
+	al_draw_text(font1, al_map_rgb(255, 255, 255), 100, 150, 0, scoreBoard.c_str());
+	al_flip_display();
+	al_rest(5.0);
 
 	al_destroy_event_queue(event_queue);
 	al_destroy_timer(timer);

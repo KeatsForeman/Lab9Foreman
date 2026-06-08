@@ -140,17 +140,24 @@ int main(void)
 		if (redraw && al_is_event_queue_empty(event_queue))
 		{
 			redraw = false;
-
-			myPlayer.DrawPlayer(myPlayer.getLives());
+			if (myPlayer.getLives() > 0) {
+				myPlayer.DrawPlayer(myPlayer.getLives());
+			}
+			else if (myPlayer.getLives() <= 0) {
+				done = true;
+			}
 			for (int i = 0;i < NUM_ArrowS;i++)
 				Arrows[i].DrawArrow();
 			for (int i = 0;i < NUM_ghostS;i++)
 				ghosts[i].Drawghost();
 
+			myPlayer.DrawLives(myPlayer.getLives());
 			al_flip_display();
 			al_clear_to_color(al_map_rgb(0, 0, 0));
 		}
 	}
+
+
 
 	al_destroy_event_queue(event_queue);
 	al_destroy_timer(timer);

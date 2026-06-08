@@ -32,6 +32,16 @@ void player::DrawPlayer(int lives)
 {
 	al_draw_bitmap(kirbies[lives - 1], x, y, 0);
 }
+
+//draws the number of kirbies left
+void player::DrawLives(int lives) {
+	int lx = 20;
+	int ly = 20;
+	for (int i = 0; i < lives; i++) {
+		al_draw_scaled_bitmap(kirbies[4], 0, 0, 50, 50, lx, ly, 20, 20, 0);
+		lx += 20;
+	}
+}
 void player::MoveUp()
 {
 	y -= speed;

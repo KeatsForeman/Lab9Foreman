@@ -6,6 +6,7 @@ public:
 	player(int HEIGHT);
 	~player();
 	void DrawPlayer(int lives);
+	void DrawLives(int lives);
 	void MoveUp();
 	void MoveDown(int HEIGHT);
 	void MoveLeft();

@@ -1,9 +1,12 @@
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_primitives.h>
 #include <allegro5\allegro_image.h>
+#include <allegro5\allegro_ttf.h>
+#include <allegro5\allegro_font.h>
 #include "player.h"
 #include "ghost.h"
 #include "Arrow.h"
+#include <string>
 
 int main(void)
 {
@@ -38,6 +41,10 @@ int main(void)
 
 	al_install_keyboard();
 	al_init_image_addon();
+	al_init_ttf_addon();
+	al_init_font_addon();
+
+	ALLEGRO_FONT* font = al_load_font("cat.ttf", 20, 0);
 
 	//object variables
 	player myPlayer(HEIGHT);
@@ -78,7 +85,7 @@ int main(void)
 			for (int i = 0;i < NUM_ghostS;i++)
 				ghosts[i].Updateghost();
 			for (int i = 0;i < NUM_ArrowS;i++)
-				Arrows[i].CollideArrow(ghosts, NUM_ghostS);
+				Arrows[i].CollideArrow(ghosts, NUM_ghostS, myPlayer);
 			for (int i = 0;i < NUM_ghostS;i++)
 				ghosts[i].Collideghost(myPlayer);
 		}
@@ -152,6 +159,10 @@ int main(void)
 				ghosts[i].Drawghost();
 
 			myPlayer.DrawLives(myPlayer.getLives());
+
+			std::string scoreBoard = "Score: " + (std::to_string(myPlayer.getScore()));
+
+			al_draw_text(font, al_map_rgb(255, 255, 255), 150, 20, 0, scoreBoard.c_str());
 			al_flip_display();
 			al_clear_to_color(al_map_rgb(0, 0, 0));
 		}

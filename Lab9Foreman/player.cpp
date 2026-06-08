@@ -69,3 +69,9 @@ void player::MoveRight()
 int player::getLives() {
 	return this->lives;
 }
+void player::addScore() {
+	score += 1;
+}
+int player::getScore() {
+	return score;
+}

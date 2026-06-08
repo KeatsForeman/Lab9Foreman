@@ -17,6 +17,8 @@ public:
 	int getX() { return x; }
 	int getY() { return y; }
 	void removeLife() { lives--; }
+	void addScore();
+	int getScore();
 private:
 	int x;
 	int y;
